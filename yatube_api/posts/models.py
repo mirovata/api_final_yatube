@@ -24,28 +24,56 @@ class Group(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField()
+    text = models.TextField('Текст')
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     author = models.ForeignKey(
-        'auth.User', on_delete=models.CASCADE, related_name='posts')
+        'auth.User',
+        on_delete=models.CASCADE,
+        related_name='posts',
+        verbose_name='Автор публикации'
+    )
     image = models.ImageField(
-        upload_to='posts/', null=True, blank=True)
+        'Фото',
+        upload_to='posts/',
+        null=True,
+        blank=True
+    )
     group = models.ForeignKey(
         Group,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='posts')
+        related_name='posts',
+        verbose_name='Группа'
+    )
 
     def __str__(self):
-        return self.text
+        return self.text[:ROW_LIMIT_TO]
 
 
 class Comment(models.Model):
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='comments')
+        User,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Автор публикации'
+    )
     post = models.ForeignKey(
-        Post, on_delete=models.CASCADE, related_name='comments')
-    text = models.TextField()
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Пост'
+    )
+    text = models.TextField('Текст')
     created = models.DateTimeField(
-        'Дата добавления', auto_now_add=True, db_index=True)
+        'Дата добавления',
+        auto_now_add=True,
+        db_index=True
+    )
+
+    def __str__(self):
+        return '"{post} {author}" {text}'.format(
+            post=self.post,
+            author=self.author.username,
+            text=self.text[:ROW_LIMIT_TO]
+        )
