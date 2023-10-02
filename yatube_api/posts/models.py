@@ -8,9 +8,29 @@ ROW_LIMIT_TO = 20
 
 class Follow(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='followers')
+        User,
+        on_delete=models.CASCADE,
+        related_name='followers',
+        verbose_name='Подписчик'
+    )
     following = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='following')
+        User,
+        on_delete=models.CASCADE,
+        related_name='following',
+        verbose_name='Отслеживаемый человек'
+    )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(fields=('user', 'following', ),
+                                    name='unique_follow'),
+        )
+
+    def __str__(self):
+        return '{followers} подписан на {following}'.format(
+            followers=self.user.username,
+            following=self.following.username,
+        )
 
 
 class Group(models.Model):
