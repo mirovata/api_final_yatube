@@ -37,6 +37,8 @@ class FollowViewSet(viewsets.ModelViewSet):
 
     serializer_class = FollowSerializer
     permission_classes = (IsAuthenticated,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('following__username',)
 
     def get_queryset(self):
         return self.request.user.followers.all()
@@ -49,8 +51,6 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     serializer_class = CommentSerializer
     permission_classes = (IsAuthorOrReadOnlyPermission,)
-    filter_backends = (filters.SearchFilter,)
-    filterset_fields = ('following__username', 'user__username')
 
     def get_post(self):
         return get_object_or_404(Post, pk=self.kwargs.get('post_id'))
