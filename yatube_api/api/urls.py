@@ -5,7 +5,8 @@ from api.views import (
     CommentViewSet,
     FollowViewSet,
     GroupViewSet,
-    PostsViewSet)
+    PostsViewSet
+)
 
 
 routers = DefaultRouter()

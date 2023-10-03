@@ -8,6 +8,7 @@ from rest_framework.permissions import (
 )
 from rest_framework.generics import get_object_or_404, mixins
 
+from api.permissions import IsAuthorOrReadOnlyPermission
 from api.serializers import (
     CommentSerializer,
     GroupSerializer,
@@ -15,7 +16,7 @@ from api.serializers import (
     FollowSerializer
 )
 from posts.models import Group, Post
-from api.permissions import IsAuthorOrReadOnlyPermission
+
 
 User = get_user_model()
 
@@ -40,7 +41,11 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = GroupSerializer
 
 
-class FollowViewSet(viewsets.ModelViewSet):
+class FollowViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
+):
 
     serializer_class = FollowSerializer
     permission_classes = (IsAuthenticated,)
