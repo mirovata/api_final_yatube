@@ -11,9 +11,9 @@ from rest_framework.generics import get_object_or_404, mixins
 from api.permissions import IsAuthorOrReadOnlyPermission
 from api.serializers import (
     CommentSerializer,
+    FollowSerializer,
     GroupSerializer,
     PostSerializer,
-    FollowSerializer
 )
 from posts.models import Group, Post
 

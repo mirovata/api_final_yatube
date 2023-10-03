@@ -9,17 +9,16 @@ from api.views import (
 )
 
 
-routers = DefaultRouter()
-routers.register('posts', PostsViewSet, basename='posts')
-routers.register('groups', GroupViewSet, basename='groups')
-routers.register('follow', FollowViewSet, basename='follow')
-routers.register(r'posts/(?P<post_id>\d+)/comments',
-                 CommentViewSet,
-                 basename='comments')
+routers_v1 = DefaultRouter()
+routers_v1.register('posts', PostsViewSet, basename='posts')
+routers_v1.register('groups', GroupViewSet, basename='groups')
+routers_v1.register('follow', FollowViewSet, basename='follow')
+routers_v1.register(r'posts/(?P<post_id>\d+)/comments',
+                    CommentViewSet,
+                    basename='comments')
 
 urlpatterns = [
-    path('v1/', include(routers.urls)),
-    path('v1/', include('djoser.urls')),
+    path('v1/', include(routers_v1.urls)),
     path('v1/', include('djoser.urls.jwt'))
 
 ]
