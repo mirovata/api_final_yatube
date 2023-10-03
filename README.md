@@ -51,7 +51,7 @@ http://127.0.0.1:8000/api/v1/posts/
 
 Позволяет создать пост с необязательным выбором группы и фотографии.
 
-![x](https://github.com/mirovata/api_final_yatube/assets/21317554/8fb51d22-0ef1-449d-83b9-4b06ec5160e9)
+[![x.png](https://i.postimg.cc/xdpCNZq0/x.png)](https://postimg.cc/NyTYWp1V)
 
 Также запрос на адрес:
 
@@ -61,7 +61,7 @@ http://127.0.0.1:8000/api/v1/follow/
 
 Позволяет пользователям подписаться друг на друга.
 
-![Снимок экрана 2023-10-03 101610](https://github.com/mirovata/api_final_yatube/assets/21317554/63b7ba7c-6305-4c19-89a3-dcb889a8e37f)
+[![dasdas.png](https://i.postimg.cc/9f7SyRQr/dasdas.png)](https://postimg.cc/t192jgPj)
 
 ## Автор:
 
