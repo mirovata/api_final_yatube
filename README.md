@@ -61,7 +61,7 @@ http://127.0.0.1:8000/api/v1/follow/
 
 Позволяет пользователям подписаться друг на друга.
 
-![Снимок экрана 2023-10-03 101725](https://github.com/mirovata/api_final_yatube/assets/21317554/1bd21825-7bc0-4fc7-9889-315150dea800)
+![Снимок экрана 2023-10-03 101610](https://github.com/mirovata/api_final_yatube/assets/21317554/63b7ba7c-6305-4c19-89a3-dcb889a8e37f)
 
 ## Автор:
 
